@@ -19,6 +19,9 @@ public interface FarmerDao {
     @Query("DELETE FROM farmers_table")
     void deleteAll();
 
-    @Query("SELECT * from users_table ORDER BY id desc ")
+    @Query("SELECT * from farmers_table ORDER BY id desc ")
     LiveData<List<Farmer>> getAllFarmers();
+
+    @Query("SELECT * FROM farmers_table WHERE id=:farmerId LIMIT 1")
+    LiveData<Farmer> getSingleFarmer(int farmerId);
 }

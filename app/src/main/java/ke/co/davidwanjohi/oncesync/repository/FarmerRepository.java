@@ -83,4 +83,9 @@ public class FarmerRepository {
             }
         });
     }
+
+    public LiveData<Farmer> getSingleFarmer(int farmerId) {
+
+        return farmerDao.getSingleFarmer(farmerId);
+    }
 }

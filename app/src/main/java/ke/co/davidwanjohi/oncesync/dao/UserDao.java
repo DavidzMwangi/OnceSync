@@ -21,7 +21,6 @@ public interface UserDao {
     void deleteAll();
 
 
-
     @Query("SELECT * from users_table ORDER BY id desc LIMIT 1")
     LiveData<User> getAuthUser();
 

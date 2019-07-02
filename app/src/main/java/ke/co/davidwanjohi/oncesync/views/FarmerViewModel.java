@@ -41,4 +41,9 @@ public class FarmerViewModel extends AndroidViewModel {
 
         farmerRepository.saveFarmerOnline(access_token,name,gender,telephoneNo,accountNo,location);
     }
+
+    public LiveData<Farmer> getSingleFarmer(int farmerId){
+
+        return  farmerRepository.getSingleFarmer(farmerId);
+    }
 }
