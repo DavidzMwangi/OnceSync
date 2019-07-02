@@ -48,12 +48,7 @@ public class RegisterFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                authorizationViewModel.registerOnline(name.getText().toString(),email.getText().toString(),1,password.getText().toString(),passwordConfirm.getText().toString());
-            }
-        });
+        signUp.setOnClickListener(v -> authorizationViewModel.registerOnline(name.getText().toString(),email.getText().toString(),1,password.getText().toString(),passwordConfirm.getText().toString()));
 
         authorizationViewModel.monitor.observe(this, new Observer<NetworkResponse>() {
             @Override

@@ -12,11 +12,19 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import android.view.Menu;
+
+import ke.co.davidwanjohi.oncesync.models.Authorization;
+import ke.co.davidwanjohi.oncesync.models.User;
+import ke.co.davidwanjohi.oncesync.views.UserViewModel;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    UserViewModel userViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,24 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        userViewModel= ViewModelProviders.of(this).get(UserViewModel.class);
+        userViewModel.getAuthUserInfo().observe(this, new Observer<User>() {
+            @Override
+            public void onChanged(User user) {
+                //get user data here
+            }
+        });
+
+        userViewModel.mAuth.observe(this, new Observer<Authorization>() {
+            @Override
+            public void onChanged(Authorization authorization) {
+                if (authorization!=null){
+
+                    userViewModel.getAuthInfoOnline(authorization.access_token);
+                }
+            }
+        });
     }
 
     @Override

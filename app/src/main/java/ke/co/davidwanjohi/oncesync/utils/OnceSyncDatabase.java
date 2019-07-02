@@ -7,13 +7,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import ke.co.davidwanjohi.oncesync.dao.AuthorizationDao;
+import ke.co.davidwanjohi.oncesync.dao.UserDao;
 import ke.co.davidwanjohi.oncesync.models.Authorization;
 
 @Database(entities = {Authorization.class},version = 1)
 public abstract class OnceSyncDatabase extends RoomDatabase {
 
     public abstract AuthorizationDao authorizationDao();
-
+    public abstract UserDao userDao();
     private static OnceSyncDatabase INSTANCE;
     public static OnceSyncDatabase getDatabase(final Context context){
         if (INSTANCE==null){
