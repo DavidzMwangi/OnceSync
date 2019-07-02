@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 
+import butterknife.ButterKnife;
 import ke.co.davidwanjohi.oncesync.fragments.auth.LoginFragment;
 import ke.co.davidwanjohi.oncesync.fragments.auth.RegisterFragment;
 import ke.co.davidwanjohi.oncesync.fragments.auth.WelcomeFragment;
@@ -22,6 +23,7 @@ public class AuthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
+        ButterKnife.bind(this);
         authorizationViewModel= ViewModelProviders.of(this).get(AuthorizationViewModel.class);
 
         authorizationViewModel.authorization.observe(this, new Observer<Authorization>() {

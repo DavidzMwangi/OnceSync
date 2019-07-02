@@ -17,14 +17,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.view.Menu;
 
+import butterknife.ButterKnife;
 import ke.co.davidwanjohi.oncesync.models.Authorization;
 import ke.co.davidwanjohi.oncesync.models.User;
+import ke.co.davidwanjohi.oncesync.views.FarmerViewModel;
 import ke.co.davidwanjohi.oncesync.views.UserViewModel;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     UserViewModel userViewModel;
+    FarmerViewModel farmerViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,9 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
+        ButterKnife.bind(this);
         userViewModel= ViewModelProviders.of(this).get(UserViewModel.class);
+        farmerViewModel=ViewModelProviders.of(this).get(FarmerViewModel.class);
         userViewModel.getAuthUserInfo().observe(this, new Observer<User>() {
             @Override
             public void onChanged(User user) {
@@ -61,6 +66,7 @@ public class MainActivity extends AppCompatActivity
                 if (authorization!=null){
 
                     userViewModel.getAuthInfoOnline(authorization.access_token);
+                    farmerViewModel.getFarmersOnline(authorization.access_token);
                 }
             }
         });
@@ -98,7 +104,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
