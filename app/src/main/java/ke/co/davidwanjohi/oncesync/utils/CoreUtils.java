@@ -20,8 +20,7 @@ public class CoreUtils {
     private static Retrofit auth_retrofit = null;
 
 
-    public static String base_url="http://192.168.137.1/AgriSystem/public/api/";
-//    public static String base_url="http://192.168.100.109/Afrilit/public/api/";
+    public static String base_url="http://157.230.31.41/oncesync-laravel/public/api";
 
     public static Retrofit getRetrofitClient() {
         if (retrofit == null) {
