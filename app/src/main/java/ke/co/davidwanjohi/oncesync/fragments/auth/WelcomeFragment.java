@@ -8,12 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+import ke.co.davidwanjohi.oncesync.R;
+
 public class WelcomeFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+
+        ViewGroup login_view = (ViewGroup) inflater.inflate(
+                R.layout.auth_welcome_fragment, container, false
+        );
+        ButterKnife.bind(this, login_view);
+        return  login_view;
     }
 
     @Override
