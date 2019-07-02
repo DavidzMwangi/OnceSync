@@ -59,4 +59,28 @@ public class FarmerRepository {
             }
         });
     }
+
+    public void saveFarmerOnline(String access_token, String name, int gender, String telephoneNo, String accountNo, String location) {
+        Call<Farmer> call=CoreUtils.getAuthRetrofitClient(access_token).create(FarmerService.class).saveNewFarmerOnline(name,gender,telephoneNo,accountNo,location);
+        call.enqueue(new Callback<Farmer>() {
+            @Override
+            public void onResponse(Call<Farmer> call, Response<Farmer> response) {
+
+                monitor.postValue(new NetworkResponse(false));
+                if (response.body()!=null){
+
+                    farmerDao.insert(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Farmer> call, Throwable t) {
+                try{
+                    monitor.postValue(new NetworkResponse(false,"Check your internet connection then try again",((HttpException) t).code()));
+                }catch (Exception e){
+                    monitor.postValue(new NetworkResponse(false,"Check your internet connection then try again",0));
+                }
+            }
+        });
+    }
 }

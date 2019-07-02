@@ -35,4 +35,10 @@ public class FarmerViewModel extends AndroidViewModel {
     public void getFarmersOnline(String token){
         farmerRepository.getFarmersDataOnline(token);
     }
+
+
+    public void saveFarmerOnline(String access_token, String name, int gender, String telephoneNo, String accountNo, String location) {
+
+        farmerRepository.saveFarmerOnline(access_token,name,gender,telephoneNo,accountNo,location);
+    }
 }
