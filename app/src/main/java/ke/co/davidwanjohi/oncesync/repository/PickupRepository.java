@@ -21,11 +21,13 @@ import retrofit2.Response;
 public class PickupRepository {
     PickupDao pickupDao;
     public MutableLiveData<NetworkResponse> monitor;
+    public MutableLiveData<Boolean> isSavedOnline;
     public LiveData<List<Pickup>> allPickups;
     public PickupRepository(Application application){
         OnceSyncDatabase onceSyncDatabase=OnceSyncDatabase.getDatabase(application);
         pickupDao=onceSyncDatabase.pickupDao();
         monitor=new MutableLiveData<>();
+        isSavedOnline=new MutableLiveData<>();
         allPickups=pickupDao.getAllPickups();
 
     }
@@ -67,6 +69,7 @@ public class PickupRepository {
         call.enqueue(new Callback<Pickup>() {
             @Override
             public void onResponse(Call<Pickup> call, Response<Pickup> response) {
+                isSavedOnline.postValue(true);
 
                 monitor.postValue(new NetworkResponse(false));
                 if (response.body()!=null){

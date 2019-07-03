@@ -12,12 +12,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.Menu;
 
 import butterknife.ButterKnife;
+import ke.co.davidwanjohi.oncesync.fragments.home.AllFarmersFragment;
+import ke.co.davidwanjohi.oncesync.fragments.home.NewFarmerFragment;
+import ke.co.davidwanjohi.oncesync.fragments.home.NewPickupFragment;
 import ke.co.davidwanjohi.oncesync.models.Authorization;
 import ke.co.davidwanjohi.oncesync.models.User;
 import ke.co.davidwanjohi.oncesync.views.FarmerViewModel;
@@ -34,14 +38,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -70,6 +67,8 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+
+        changeFragment(1);
     }
 
     @Override
@@ -110,22 +109,37 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        if (id == R.id.nav_new_farmer) {
+            changeFragment(2);
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_new_pickup) {
+            changeFragment(3);
+        } else if (id == R.id.nav_all_farmers) {
+            changeFragment(1);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void changeFragment(int page){
+
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        switch (page){
+
+
+            case 1:
+                transaction.replace(R.id.main_frame,new AllFarmersFragment(),"All Farmers").commit();
+
+                break;
+            case 2:
+
+                transaction.replace(R.id.main_frame,new NewFarmerFragment(),"New Fragment").commit();
+                break;
+            case 3:
+                transaction.replace(R.id.main_frame,new NewPickupFragment(),"New Pickup").commit();
+                break;
+        }
     }
 }

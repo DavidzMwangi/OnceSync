@@ -20,6 +20,7 @@ public class PickUpViewModel extends AndroidViewModel {
     PickupRepository pickupRepository;
     public LiveData<Authorization> mAuth;
     public MutableLiveData<NetworkResponse> monitor;
+    public MutableLiveData<Boolean> isSavedOnline;
     AuthorizationRepository authorizationRepository;
     public PickUpViewModel(@NonNull Application application) {
         super(application);
@@ -28,6 +29,7 @@ public class PickUpViewModel extends AndroidViewModel {
         authorizationRepository=new AuthorizationRepository(application);
         mAuth=authorizationRepository.authorization;
         monitor=pickupRepository.monitor;
+        isSavedOnline=pickupRepository.isSavedOnline;
 
     }
 

@@ -52,4 +52,11 @@ public class Farmer {
     public void setId(int id) {
         this.id = id;
     }
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
+    }
 }

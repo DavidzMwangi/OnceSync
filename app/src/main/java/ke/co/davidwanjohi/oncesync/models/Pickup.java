@@ -48,4 +48,6 @@ public class Pickup {
     public void setId(int id) {
         this.id = id;
     }
+
+
 }

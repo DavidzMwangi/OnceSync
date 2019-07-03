@@ -1,6 +1,7 @@
 package ke.co.davidwanjohi.oncesync.repository;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -57,6 +58,7 @@ public class AuthorizationRepository {
             @Override
             public void onFailure(Call<Authorization> call, Throwable t) {
 
+                Log.e("errr",t.getMessage());
                 try{
                     monitor.postValue(new NetworkResponse(false,"Check your internet connection then try again",((HttpException) t).code()));
                 }catch (Exception e){
