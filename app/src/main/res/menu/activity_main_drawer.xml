@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_new_farmer"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/person_add"
             android:title="New Farmer" />
         <item
             android:id="@+id/nav_new_pickup"
@@ -14,7 +14,7 @@
             android:title="New Pickup" />
         <item
             android:id="@+id/nav_all_farmers"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/person"
             android:title="All Farmers" />
 
     </group>

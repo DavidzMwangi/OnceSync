@@ -19,6 +19,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 android:text="Name"/>
 
             <TextView
@@ -29,6 +31,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 android:text="Gender"/>
 
             <TextView
@@ -40,6 +44,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 android:text="Telephone Number"/>
 
             <TextView
@@ -50,6 +56,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 android:text="Account Number"/>
 
             <TextView
@@ -62,6 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/five"
                 android:layout_marginBottom="@dimen/five"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
                 android:text="Location"/>
             <TextView
                 android:layout_width="match_parent"
@@ -69,5 +79,19 @@
                 android:id="@+id/location"/>
 
 
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Farmers Pickups"
+                android:textSize="@dimen/twenty"
+                android:textColor="@color/colorAccent"
+                android:gravity="center_horizontal"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/pickups_recycler"
+                ></androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
     </ScrollView>
