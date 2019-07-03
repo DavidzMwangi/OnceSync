@@ -21,6 +21,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -96,11 +98,19 @@ public class NewPickupFragment extends Fragment {
             @Override
             public void onChanged(NetworkResponse networkResponse) {
                 if (networkResponse!=null){
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(),"PickUp Saved Successfully",Toast.LENGTH_SHORT).show();
-                    FragmentTransaction transaction=((MainActivity)getActivity()).getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.main_frame,new AllFarmersFragment(),"all").commit();
-                }
+
+                    if(networkResponse.message!=null && !networkResponse.message.equals("")){
+                        Snackbar.make(view, networkResponse.message , Snackbar.LENGTH_LONG).show();
+
+                    }else{
+
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getActivity(),"PickUp Saved Successfully",Toast.LENGTH_SHORT).show();
+                        FragmentTransaction transaction=((MainActivity)getActivity()).getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.main_frame,new AllFarmersFragment(),"all").commit();
+
+                    }
+                       }
 
             }
         });

@@ -4,20 +4,27 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ke.co.davidwanjohi.oncesync.MainActivity;
 import ke.co.davidwanjohi.oncesync.R;
 import ke.co.davidwanjohi.oncesync.models.Authorization;
+import ke.co.davidwanjohi.oncesync.utils.NetworkResponse;
 import ke.co.davidwanjohi.oncesync.views.FarmerViewModel;
 
 public class NewFarmerFragment extends Fragment {
@@ -27,6 +34,7 @@ public class NewFarmerFragment extends Fragment {
     @BindView(R.id.account_number) AppCompatEditText accountNo;
     @BindView(R.id.location) AppCompatEditText location;
     @BindView(R.id.save_btn) AppCompatButton saveBtn;
+    @BindView(R.id.progress) ProgressBar progressBar;
     @BindView(R.id.radioGroup)
     RadioGroup radioGroup;
     static int gender=0; //0-male 1-female
@@ -60,7 +68,7 @@ public class NewFarmerFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
+                progressBar.setVisibility(View.VISIBLE);
 
                 radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
                     switch(checkedId){
@@ -82,7 +90,27 @@ public class NewFarmerFragment extends Fragment {
         });
 
 
+        farmerViewModel.monitor.observe(this, new Observer<NetworkResponse>() {
+            @Override
+            public void onChanged(NetworkResponse networkResponse) {
+                if (networkResponse!=null){
 
+
+                        if(networkResponse.message!=null && !networkResponse.message.equals("")){
+                            Snackbar.make(view, networkResponse.message , Snackbar.LENGTH_LONG).show();
+
+                        }else{
+
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getActivity(),"Farmer Saved Successfully",Toast.LENGTH_SHORT).show();
+                            FragmentTransaction transaction=((MainActivity)getActivity()).getSupportFragmentManager().beginTransaction();
+                            transaction.replace(R.id.main_frame,new AllFarmersFragment(),"all").commit();
+
+                        }
+                    }
+
+            }
+        });
 
 
     }
