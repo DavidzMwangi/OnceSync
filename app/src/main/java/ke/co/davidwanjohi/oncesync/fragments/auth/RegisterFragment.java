@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,7 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        authorizationViewModel= ViewModelProviders.of(this).get(AuthorizationViewModel.class);
 
         signUp.setOnClickListener(v -> authorizationViewModel.registerOnline(name.getText().toString(),email.getText().toString(),1,password.getText().toString(),passwordConfirm.getText().toString()));
 
