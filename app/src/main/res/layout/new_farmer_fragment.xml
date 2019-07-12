@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginTop="@dimen/twenty"
     android:layout_width="match_parent"
-    android:layout_marginLeft="@dimen/ten"
-    android:layout_marginRight="@dimen/ten"
     android:layout_height="match_parent">
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-
-        >
+        android:layout_marginStart="@dimen/twenty"
+        android:layout_marginEnd="@dimen/twenty">
         <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone"
             android:id="@+id/progress"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name"/>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/ten"
+            android:layout_height="wrap_content"
+            android:text="Full Names"
+            android:textSize="@dimen/twenty"/>
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
+            android:hint="Full Names"
+            android:paddingLeft="@dimen/twenty"
+            android:inputType="text"
+            android:id="@+id/name"
+            android:background="@drawable/rounded_stroked_edit_text"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/name"/>
-
-
+            android:textSize="20sp"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/ten"
+            android:text="Gender"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginBottom="@dimen/twenty"
-
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gender"/>
+
 
             <RadioGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:weightSum="1"
-                android:layout_marginStart="20dp"
                 android:orientation="horizontal"
                 android:id="@+id/radioGroup"
                 >
@@ -54,16 +57,18 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="M"
+                    android:text="MALE"
                     android:id="@+id/male"
                     android:layout_gravity="center_horizontal"
                     android:checked="false"
-                    android:textSize="25dp" />
+                    android:textSize="25dp"
+                    android:layout_marginEnd="@dimen/five"/>
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="F"
+                    android:text="FEMALE"
+                    android:layout_marginStart="@dimen/five"
                     android:id="@+id/female"
                     android:layout_gravity="center_horizontal"
                     android:checked="false"
@@ -73,44 +78,118 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Telephone Number"/>
 
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="@dimen/ten"
+            android:layout_height="wrap_content"
+            android:text="Phone Number:"
+            android:textSize="@dimen/twenty"/>
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
+            android:hint="Phone Number"
+            android:paddingLeft="@dimen/twenty"
+            android:inputType="text"
+            android:id="@+id/telephone_no"
+            android:background="@drawable/rounded_stroked_edit_text"
+            android:layout_height="40dp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/ten"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-
-            android:id="@+id/telephone_no"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Account Number"/>
-
+            android:text="ID Number:"
+            android:textSize="15sp"/>
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/account_number"/>
+            android:hint="ID Number"
 
-        <TextView
+            android:paddingLeft="@dimen/twenty"
+            android:inputType="number"
+            android:id="@+id/id_no"
+            android:background="@drawable/rounded_stroked_edit_text"
+            android:layout_height="40dp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/ten"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/five"
-            android:layout_marginBottom="@dimen/five"
-            android:text="Location"/>
+            android:text="A/C Number"
+            android:textSize="15sp"/>
         <androidx.appcompat.widget.AppCompatEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/location"/>
+            android:hint="A/C Number"
+            android:paddingLeft="@dimen/twenty"
+            android:inputType="text"
+            android:id="@+id/account_number"
+            android:background="@drawable/rounded_stroked_edit_text"
+            android:layout_height="40dp" />
 
-        <androidx.appcompat.widget.AppCompatButton
+
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_marginBottom="@dimen/ten"
             android:layout_height="wrap_content"
-            android:id="@+id/save_btn"
-            android:text="Save"/>
+            android:text="Location"
+            android:textSize="15sp"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:hint="Location"
+            android:paddingLeft="@dimen/twenty"
+            android:inputType="text"
+            android:id="@+id/location"
+            android:background="@drawable/rounded_stroked_edit_text"
+            android:layout_height="40dp" />
+
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:weightSum="2"
+         android:layout_marginTop="@dimen/twenty"
+         android:orientation="horizontal">
+
+
+         <androidx.appcompat.widget.AppCompatButton
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:layout_gravity="center"
+             android:layout_height="wrap_content"
+             android:id="@+id/clear_btn"
+             android:textColor="@color/text_shadow_white"
+             android:backgroundTint="@color/colorAccent"
+             android:background="@drawable/rounded_rectangle_button"
+             android:layout_marginEnd="@dimen/twenty"
+             android:layout_marginStart="@dimen/ten"
+             android:text="Clear"/>
+
+
+         <androidx.appcompat.widget.AppCompatButton
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:textColor="@color/text_shadow_white"
+             android:layout_marginEnd="@dimen/ten"
+             android:layout_marginStart="@dimen/twenty"
+             android:layout_gravity="center"
+             android:layout_height="wrap_content"
+             android:id="@+id/save_btn"
+             android:background="@drawable/rounded_rectangle_button"
+             android:backgroundTint="@color/success"
+             android:text="Submit"/>
+     </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
     </LinearLayout>
 </ScrollView>

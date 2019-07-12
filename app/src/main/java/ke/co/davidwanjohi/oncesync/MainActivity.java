@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity
             changeFragment(3);
         } else if (id == R.id.nav_all_farmers) {
             changeFragment(1);
+        } else if (id == R.id.nav_dashboard) {
+            changeFragment(4);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
