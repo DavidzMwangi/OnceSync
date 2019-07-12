@@ -20,6 +20,7 @@ import android.view.Menu;
 
 import butterknife.ButterKnife;
 import ke.co.davidwanjohi.oncesync.fragments.home.AllFarmersFragment;
+import ke.co.davidwanjohi.oncesync.fragments.home.DashboardFragment;
 import ke.co.davidwanjohi.oncesync.fragments.home.NewFarmerFragment;
 import ke.co.davidwanjohi.oncesync.fragments.home.NewPickupFragment;
 import ke.co.davidwanjohi.oncesync.models.Authorization;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        changeFragment(1);
+        changeFragment(4);
     }
 
     @Override
@@ -139,6 +140,11 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 3:
                 transaction.replace(R.id.main_frame,new NewPickupFragment(),"New Pickup").commit();
+                break;
+
+            case 4:
+
+                transaction.replace(R.id.main_frame,new DashboardFragment(),"Dashboard Fragment").commit();
                 break;
         }
     }
