@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import butterknife.ButterKnife;
+import ke.co.davidwanjohi.oncesync.fragments.auth.LandingPageFragment;
 import ke.co.davidwanjohi.oncesync.fragments.auth.LoginFragment;
 import ke.co.davidwanjohi.oncesync.fragments.auth.RegisterFragment;
 import ke.co.davidwanjohi.oncesync.fragments.auth.WelcomeFragment;
@@ -35,7 +36,7 @@ public class AuthActivity extends AppCompatActivity {
 
                 }else{
 
-                    changeFragment(0);
+                    changeFragment(1);
 
                 }
             }
@@ -61,7 +62,9 @@ public class AuthActivity extends AppCompatActivity {
                 transaction.replace(R.id.auth_frame,new RegisterFragment(),"Register Fragment").commit();
                 break;
 
-
+            case 3:
+                transaction.replace(R.id.auth_frame,new LandingPageFragment(),"Landing").commit();
+                break;
         }
     }
 }

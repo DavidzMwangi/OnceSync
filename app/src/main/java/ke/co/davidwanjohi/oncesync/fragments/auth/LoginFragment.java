@@ -36,7 +36,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         ViewGroup login_view = (ViewGroup) inflater.inflate(
-                R.layout.auth_login_fragment, container, false
+                R.layout.login_fragment, container, false
         );
         ButterKnife.bind(this, login_view);
         return  login_view;

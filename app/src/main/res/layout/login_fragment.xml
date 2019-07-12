@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgound_image"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/twenty"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/twenty"
+        android:layout_marginRight="@dimen/twenty"
+        android:layout_marginBottom="100dp"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/logo"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shamba Records"
+            android:textColor="@color/text_shadow_white"
+            android:textStyle="bold"
+            android:textSize="30dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_shadow_white"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="Rungeto milk collection app"
+            android:textSize="30dp"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:id="@+id/login_pr"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/twenty"
+            android:drawableLeft="@drawable/person"
+            android:drawablePadding="@dimen/ten"
+            android:hint="Email"
+            android:background="@drawable/edit_text_background"
+            android:inputType="textEmailAddress"
+            android:id="@+id/user_name_edit_text"
+            android:textColorHint="@color/text_shadow_white"
+            android:textColor="@color/text_shadow_white"
+            android:layout_height="wrap_content" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/twenty"
+            android:drawableLeft="@drawable/ic_action_lock"
+            android:drawablePadding="@dimen/ten"
+            android:hint="Password"
+            android:background="@drawable/edit_text_background"
+            android:id="@+id/password_edit_text"
+            android:inputType="textPassword"
+            android:textColorHint="@color/text_shadow_white"
+            android:textColor="@color/text_shadow_white"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/text_shadow_white"
+            android:layout_marginTop="@dimen/twenty"
+            android:text="Forgot Password ?"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/twenty"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_shadow_white"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/sign_btn"
+            android:paddingLeft="@dimen/twenty"
+            android:drawableRight="@drawable/ic_action_arrow"
+            android:paddingRight="@dimen/twenty"
+            android:background="@drawable/rounded_rectangle_button"
+            android:text="Sign in with your account"/>
+    </LinearLayout>
+
+</ScrollView>
