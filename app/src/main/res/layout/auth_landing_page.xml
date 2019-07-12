@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#000"
+    android:background="@drawable/backgound_image"
     >
 
     <ImageView
@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shamba Records"
+        android:textColor="@color/text_shadow_white"
         android:textSize="30dp"/>
 
 </LinearLayout>

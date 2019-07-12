@@ -66,13 +66,16 @@ public class LoginFragment extends Fragment {
         signBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
 
                 if (emailText.getText().toString().equals("")|| emailText.getText().toString()==""){
                     emailText.setError("This field cannot be empty");
+                    progressBar.setVisibility(View.GONE);
 
 
                 }else if (passwordText.getText().toString().equals("") || passwordText.getText().toString()==""){
                     passwordText.setError("This field cannot be empty");
+                    progressBar.setVisibility(View.GONE);
 
                 }else{
                     //attempt to login
@@ -81,5 +84,22 @@ public class LoginFragment extends Fragment {
 
             }
         });
+
+        authorizationViewModel.monitor.observe(this, new Observer<NetworkResponse>() {
+            @Override
+            public void onChanged(@Nullable NetworkResponse networkResponse) {
+                if(networkResponse==null)
+                    return;
+                if(networkResponse.is_loading){
+                    progressBar.setVisibility(View.VISIBLE);
+                }else{
+                    progressBar.setVisibility(View.GONE);
+                }
+
+                if(networkResponse.message!=null && !networkResponse.message.equals(""))
+                    Snackbar.make(progressBar, networkResponse.message , Snackbar.LENGTH_LONG).show();
+            }
+        });
+
     }
 }

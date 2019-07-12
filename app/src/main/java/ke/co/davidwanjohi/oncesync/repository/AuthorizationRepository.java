@@ -50,7 +50,7 @@ public class AuthorizationRepository {
                     authorizationDao.deleteAll();
                     authorizationDao.insert(response.body());
                 }else{
-                    monitor.postValue(new NetworkResponse(false,"Cannot connect to the server",response.code()));
+                    monitor.postValue(new NetworkResponse(false,"The Information entered does not match any account in the system",response.code()));
 
                 }
             }

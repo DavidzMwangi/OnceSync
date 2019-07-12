@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import butterknife.ButterKnife;
 import ke.co.davidwanjohi.oncesync.fragments.auth.LandingPageFragment;
@@ -27,11 +28,29 @@ public class AuthActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         authorizationViewModel= ViewModelProviders.of(this).get(AuthorizationViewModel.class);
 
+
+        changeFragment(3);
+        Handler handler=new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //handle the authentication part here
+
+                handlingAuthentication();
+            }
+        },1500);
+
+
+    }
+
+    private void handlingAuthentication() {
+
         authorizationViewModel.authorization.observe(this, new Observer<Authorization>() {
             @Override
             public void onChanged(Authorization authorization) {
                 if (authorization!=null){
                     Intent intent=new Intent(AuthActivity.this,MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
 
                 }else{
