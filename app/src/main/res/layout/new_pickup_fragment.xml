@@ -65,9 +65,18 @@
     <DatePicker
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/date_picker">
+        android:id="@+id/date_picker"
+        android:visibility="gone">
 
     </DatePicker>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/todays_date"
+
+            />
 
 
         <androidx.appcompat.widget.AppCompatButton

@@ -27,6 +27,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/round_corner_linear"
 
+                android:id="@+id/add_farmer"
                 android:layout_marginEnd="@dimen/ten"
                 android:layout_height="180dp"
                 android:orientation="vertical">
@@ -99,6 +100,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/round_corner_linear"
 
+                android:id="@+id/add_collection"
                 android:layout_marginEnd="@dimen/ten"
                 android:layout_height="180dp"
                 android:orientation="vertical">

@@ -13,9 +13,10 @@ import ke.co.davidwanjohi.oncesync.dao.UserDao;
 import ke.co.davidwanjohi.oncesync.models.Authorization;
 import ke.co.davidwanjohi.oncesync.models.Farmer;
 import ke.co.davidwanjohi.oncesync.models.Pickup;
+import ke.co.davidwanjohi.oncesync.models.UnSyncedPickup;
 import ke.co.davidwanjohi.oncesync.models.User;
 
-@Database(entities = {Authorization.class, User.class, Farmer.class, Pickup.class},version = 1)
+@Database(entities = {Authorization.class, User.class, Farmer.class, Pickup.class, UnSyncedPickup.class},version = 1)
 public abstract class OnceSyncDatabase extends RoomDatabase {
 
     public abstract AuthorizationDao authorizationDao();

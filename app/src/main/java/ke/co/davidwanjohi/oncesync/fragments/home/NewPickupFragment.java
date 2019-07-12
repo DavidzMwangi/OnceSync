@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
@@ -24,6 +25,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -46,6 +49,8 @@ public class NewPickupFragment extends Fragment {
     @BindView(R.id.date_picker) DatePicker datePicker;
     @BindView(R.id.save_btn) AppCompatButton saveBtn;
     @BindView(R.id.progress) ProgressBar progressBar;
+    @BindView(R.id.todays_date)
+    AppCompatTextView todaysDate;
 
     ArrayAdapter<Farmer> farmerArrayAdapter;
     Farmer selectedFarmer;
@@ -126,19 +131,28 @@ public class NewPickupFragment extends Fragment {
 
             }
         });
+
+
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+
+                Date d = new Date();
+        String strDate = dateFormatter.format(d);
+
+        todaysDate.setText(strDate);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
 
-                int day = datePicker.getDayOfMonth();
-                int month = datePicker.getMonth() + 1;
-                int year = datePicker.getYear();
-//MM-dd-yyyy
+//                int day = datePicker.getDayOfMonth();
+//                int month = datePicker.getMonth() + 1;
+//                int year = datePicker.getYear();
 
-                SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date d = new Date(year, month, day);
-                String strDate = dateFormatter.format(d);
+//                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//                LocalDate now = LocalDateTime.now();
+
+
+
 
 
                 pickUpViewModel.savePickupOnline(authorization.access_token,strDate,Double.parseDouble(litres.getText().toString()),accountNo.getText().toString(),selectedFarmer.getId());
